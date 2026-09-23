@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>India AI Grid — Infrastructure Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+.map-layout{display:grid;grid-template-columns:330px 1fr;gap:14px}
+#map{height:650px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.controls{height:650px;overflow:auto}
+.legend{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin:9px 0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--green);display:inline-block}
+.dot.orange{background:var(--accent)}
+.dot.dark{background:#39443E}
+.city-title{font:700 17px var(--head);margin-bottom:4px}
+.popup-score{font:700 25px monospace;color:var(--green)}
+.leaflet-popup-content-wrapper{background:#EEF1EF;color:#1B211F;border:1px solid #C7CFC9}
+.leaflet-popup-tip{background:#EEF1EF}
+.leaflet-control-zoom a{color:#1B211F!important}
+@media(max-width:850px){.map-layout{grid-template-columns:1fr}.controls{height:auto}#map{height:520px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+<a class="brand" href="index.html"><span class="mark">AI</span>INDIA AI GRID</a>
+<div class="links">
+<a href="sitefinder.html">SiteFinder</a><a href="map.html">Map</a><a href="digital-twin.html">Digital Twin</a><a href="demand.html">Demand</a><a href="partners.html">Partners</a><a href="report.html">Report</a>
+</div>
+</div></nav>
+
+<main class="wrap">
+<div class="eyebrow">01A / INDIA INFRASTRUCTURE MAP</div>
+<h1>See India's AI infrastructure landscape.</h1>
+<p class="lead">A prototype national map for comparing major data-centre markets and identifying where future AI infrastructure could be investigated.</p>
+
+<div class="map-layout">
+<div class="controls">
+<div class="card">
+<label>Map layer</label>
+<select id="layer">
+<option value="all">AI Infrastructure Readiness</option>
+<option value="capacity">Existing DC Capacity</option>
+<option value="growth">Growth / Pipeline</option>
+<option value="water">Water Risk — flag for diligence</option>
+</select>
+</div>
+<br>
+<div class="card">
+<span class="tag">HOW TO USE</span>
+<p class="small">Click a city marker to inspect its prototype profile. The marker scores are demonstration values and should later be calculated from verified datasets.</p>
+<div class="legend"><i class="dot"></i> Stronger prototype signal</div>
+<div class="legend"><i class="dot orange"></i> Constraint / diligence flag</div>
+<div class="legend"><i class="dot dark"></i> Emerging market</div>
+</div>
+<br>
+<div class="card">
+<span class="tag">CURRENT DATA SIGNALS</span>
+<h2 id="national">~1.75 GW</h2>
+<p class="small">CBRE reported approximately 1.75 GW of operational data-centre capacity in India at H1 2026.</p>
+<div class="metric"><span>Key markets</span><strong>Mumbai · Chennai</strong></div>
+<div class="metric"><span>Growth hubs</span><strong>Hyderabad · Pune</strong></div>
+<div class="metric"><span>Expansion</span><strong>Tier-II emerging</strong></div>
+</div>
+<br>
+<div class="card dark">
+<span class="tag">PRODUCT IDEA</span>
+<h2>From map → site</h2>
+<p class="small">Next version: click any district, draw a project radius, enter MW demand, and generate a site-readiness score using power, renewable access, water, fibre, talent, land and demand layers.</p>
+</div>
+</div>
+
+<div id="map"></div>
+</div>
+</main>
+<footer><div class="wrap">India AI Grid · Map prototype · Source-backed production data planned</div></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const cities = [
+ {name:"Mumbai",lat:19.076,lon:72.878,score:91,capacity:"~890 MW (H1 2026 source varies by methodology)",growth:"High",power:"Strong",network:"Very strong",water:"Review",note:"Major connectivity and cable-landing ecosystem."},
+ {name:"Chennai",lat:13.083,lon:80.270,score:88,capacity:"~214 MW operational (C&W H1 2026)",growth:"High",power:"Strong",network:"Very strong",water:"Review",note:"Strong subsea connectivity and established data-centre market."},
+ {name:"Hyderabad",lat:17.385,lon:78.486,score:87,capacity:"~151 MW operational (C&W H1 2026)",growth:"Very high",power:"Strong",network:"Strong",water:"Review",note:"Rapid hyperscaler and AI infrastructure expansion."},
+ {name:"Delhi NCR",lat:28.614,lon:77.209,score:84,capacity:"~183 MW operational (C&W H1 2026)",growth:"High",power:"Strong",network:"Strong",water:"Review",note:"Large enterprise, public-sector and cloud demand."},
+ {name:"Bengaluru",lat:12.972,lon:77.594,score:85,capacity:"~162 MW operational (C&W H1 2026)",growth:"Moderate",power:"Strong",network:"Strong",water:"High diligence",note:"Deep technology and talent ecosystem; sustainability constraints matter."},
+ {name:"Pune",lat:18.520,lon:73.856,score:83,capacity:"~133 MW operational (C&W H1 2026)",growth:"High",power:"Strong",network:"Strong",water:"Review",note:"Growing hyperscaler activity and development-ready land signals."},
+ {name:"Kolkata",lat:22.573,lon:88.364,score:76,capacity:"~22 MW operational (C&W H1 2026)",growth:"High",power:"Moderate",network:"Growing",water:"Review",note:"Emerging eastern market with expanding operator activity."},
+ {name:"Ahmedabad",lat:23.023,lon:72.571,score:74,capacity:"Emerging",growth:"Growing",power:"Moderate",network:"Growing",water:"Review",note:"Emerging market; requires project-specific infrastructure validation."},
+ {name:"Bhubaneswar",lat:20.296,lon:85.824,score:70,capacity:"Emerging",growth:"Emerging",power:"To validate",network:"Growing",water:"Review",note:"Candidate Tier-II market for future edge / regional infrastructure."},
+ {name:"Visakhapatnam",lat:17.686,lon:83.218,score:69,capacity:"Emerging",growth:"Emerging",power:"To validate",network:"Growing",water:"Review",note:"Candidate emerging market; requires site-level validation."}
+];
+
+const map = L.map('map').setView([22.5,79.0],5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+ maxZoom:18,attribution:'© OpenStreetMap contributors'
+}).addTo(map);
+
+let markers=[];
+function colorFor(layer,c){
+ if(layer==='water') return c.water.includes('High') ? '#A9631F' : '#276F5F';
+ if(layer==='growth') return c.growth==='Very high'||c.growth==='High' ? '#276F5F' : '#39443E';
+ if(layer==='capacity') return c.capacity.includes('Emerging') ? '#39443E' : '#276F5F';
+ return c.score>=84 ? '#276F5F' : c.score>=75 ? '#A9631F' : '#39443E';
+}
+function draw(){
+ markers.forEach(m=>m.remove());markers=[];
+ const layer=document.getElementById('layer').value;
+ cities.forEach(c=>{
+  const col=colorFor(layer,c);
+  const circle=L.circleMarker([c.lat,c.lon],{radius:Math.max(8,c.score/9),color:col,fillColor:col,fillOpacity:.78,weight:2});
+  circle.bindPopup(`<div class="city-title">${c.name}</div><div class="popup-score">${c.score}</div><div style="font:11px monospace;color:#66706B">PROTOTYPE READINESS SIGNAL</div><hr><b>Capacity:</b> ${c.capacity}<br><b>Growth:</b> ${c.growth}<br><b>Power:</b> ${c.power}<br><b>Network:</b> ${c.network}<br><b>Water:</b> ${c.water}<p style="margin:7px 0 0;color:#66706B">${c.note}</p>`);
+  circle.addTo(map);markers.push(circle);
+ });
+}
+document.getElementById('layer').addEventListener('change',draw);
+draw();
+</script>
+</body></html>

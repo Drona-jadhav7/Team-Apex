@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# environment
+.env
+
+# build
+dist/
+build/
+.next/
+
+# local data / generated outputs
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+assets/screenshots/generated/*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

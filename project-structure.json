@@ -1,0 +1,44 @@
+{
+  "name": "india-ai-grid",
+  "purpose": "AI infrastructure decision intelligence",
+  "frontend": [
+    "app",
+    "components",
+    "dashboard",
+    "simulator",
+    "maps"
+  ],
+  "backend": [
+    "api",
+    "models",
+    "services",
+    "agents",
+    "simulations"
+  ],
+  "data": [
+    "raw",
+    "processed",
+    "sources"
+  ],
+  "ai": [
+    "rag",
+    "prompts",
+    "agents",
+    "evaluation"
+  ],
+  "simulations": [
+    "gpu_economics",
+    "infrastructure",
+    "citizen_participation"
+  ],
+  "tests": [
+    "frontend",
+    "backend",
+    "ai",
+    "simulations"
+  ],
+  "assets": [
+    "diagrams",
+    "screenshots"
+  ]
+}

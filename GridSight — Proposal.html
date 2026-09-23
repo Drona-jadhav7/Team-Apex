@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GridSight — India's AI power-readiness radar</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #EEF1EF;
+  --bg-panel: #E4E9E5;
+  --text: #1B211F;
+  --text-secondary: #4B534F;
+  --text-muted: #7A8480;
+  --accent: #A9631F;
+  --accent-2: #276F5F;
+  --border: #C7CFC9;
+  --border-strong: #9BA79E;
+  --font-head: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181A; --bg-panel: #1B2120; --text: #E8ECE8;
+    --text-secondary: #ADB6B0; --text-muted: #7C8681;
+    --accent: #DFA054; --accent-2: #52B9A2;
+    --border: #2A302B; --border-strong: #3C443E;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181A; --bg-panel: #1B2120; --text: #E8ECE8;
+  --text-secondary: #ADB6B0; --text-muted: #7C8681;
+  --accent: #DFA054; --accent-2: #52B9A2;
+  --border: #2A302B; --border-strong: #3C443E;
+}
+* { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--font-body); line-height: 1.65; font-size: 17px;
+}
+.wrap { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+h1, h2 { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+h1 { font-size: 40px; }
+h2 { font-size: 22px; margin-bottom: 10px; }
+p { margin: 0 0 16px; color: var(--text-secondary); max-width: 62ch; }
+.tagline { font-size: 18px; color: var(--text-muted); margin: 8px 0 40px; }
+.readout {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  padding: 22px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.readout .num { font-family: var(--font-mono); font-size: 34px; font-weight: 500; }
+.readout .num.a { color: var(--accent); }
+.readout .num.b { color: var(--accent-2); }
+.readout .vs { color: var(--text-muted); font-size: 15px; }
+.caption { font-size: 14px; color: var(--text-muted); margin-bottom: 48px; }
+section { margin-bottom: 44px; }
+.pipeline {
+  display: flex; align-items: center; gap: 8px; overflow-x: auto;
+  padding: 4px 0 14px; margin-bottom: 8px;
+}
+.pipeline .step {
+  flex: 0 0 auto; font-size: 13px; color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px;
+  white-space: nowrap;
+}
+.pipeline .step b { font-family: var(--font-mono); color: var(--text-muted); margin-right: 6px; font-weight: 500; }
+.pipeline .arrow { color: var(--border-strong); flex: 0 0 auto; }
+.panel {
+  border-left: 2px solid var(--accent-2); padding: 4px 0 4px 18px; margin-bottom: 22px;
+}
+.panel h3 { font-family: var(--font-head); font-size: 17px; font-weight: 500; margin: 0 0 6px; }
+.panel p { margin: 0; }
+ul { margin: 0; padding-left: 20px; color: var(--text-secondary); }
+li { margin-bottom: 8px; }
+.timeline { list-style: none; padding: 0; }
+.timeline li { display: flex; gap: 16px; margin-bottom: 12px; }
+.timeline .hrs { font-family: var(--font-mono); font-size: 13px; color: var(--accent); flex: 0 0 78px; }
+.timeline .desc { color: var(--text-secondary); }
+.divider { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
+.closing {
+  background: var(--bg-panel); border-radius: 10px; padding: 26px 26px 22px; margin-top: 8px;
+}
+.closing p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>GridSight</h1>
+  <p class="tagline">India's AI power-readiness radar</p>
+
+  <div class="readout">
+    <span class="num a">26.3 GW</span>
+    <span class="vs">projected AI data-center demand by 2032, against</span>
+    <span class="num b">6.5 GW</span>
+    <span class="vs">currently planned</span>
+  </div>
+  <p class="caption">That gap is the whole pitch. Nobody has turned it into something you can point at, state by state, with sources attached.</p>
+
+  <section>
+    <h2>The problem</h2>
+    <p>India's AI data-center buildout is running into a wall of electricity, not chips or land. Every state runs its own data-center policy — different power guarantees, different renewable mandates, different incentives — published as scattered PDFs that nobody has stitched together. Companies and policymakers are making multi-hundred-crore siting decisions without a clear, shared view of where the grid will actually hold up.</p>
+  </section>
+
+  <section>
+    <h2>The idea</h2>
+    <p>An AI agent reads India's state data-center policies and grid-capacity reports, turns them into a structured, source-cited database, and combines that with public data-center pipeline announcements to project when each state's grid headroom runs out. Wrap that in a simple, explainable scorecard, and you have something no one else has built for India specifically — not a platform, one sharp tool that answers one real question well.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="pipeline">
+      <div class="step"><b>1</b>Public data sources</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>2</b>AI extraction agent</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>3</b>Structured database</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>4</b>Power-ceiling engine</div>
+      <span class="arrow">→</span>
+      <div class="step"><b>5</b>Map dashboard</div>
+    </div>
+
+    <div class="panel">
+      <h3>The extraction agent</h3>
+      <p>Reads each state's policy PDF and grid report, pulls out structured fields — power guarantee, renewable mandate, land subsidy, MW target — and attaches the exact source page to every value. This is the real engineering, not a chatbot reading back its own database.</p>
+    </div>
+    <div class="panel">
+      <h3>The power-ceiling forecast</h3>
+      <p>Sets each state's announced data-center pipeline against its installed-plus-committed grid capacity, and projects the year that state's headroom for new AI facilities runs out. This is the one line people will repeat back to us.</p>
+    </div>
+    <div class="panel">
+      <h3>The explainable scorecard</h3>
+      <p>Adjustable weights, hard constraint gates — a high score can't hide a power shortfall — and a click-through trail from any number back to its source document. Trustworthy by design, not a black box.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The demo moment</h2>
+    <p>Instead of walking judges through screens, we ask someone in the room to name any Indian state, live. GridSight pulls up its power-ceiling projection and policy comparison for that state on the spot, source document open alongside it. That's the moment that gets remembered.</p>
+  </section>
+
+  <section>
+    <h2>Build plan</h2>
+    <ul class="timeline">
+      <li><span class="hrs">0–4h</span><span class="desc">Collect 5–8 real documents: five state data-center policies, one CEA/grid capacity report, one published pipeline tracker.</span></li>
+      <li><span class="hrs">4–10h</span><span class="desc">Build the extraction agent — structured fields out of each PDF, source page attached to every value.</span></li>
+      <li><span class="hrs">10–16h</span><span class="desc">Build the scoring formula and the power-ceiling forecast in plain code.</span></li>
+      <li><span class="hrs">16–22h</span><span class="desc">Build the map and evidence-trail UI — one page, no auth, no extra modes.</span></li>
+      <li><span class="hrs">22–24h</span><span class="desc">Rehearse the live, audience-picks-a-state demo until it's fast and doesn't break.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Real sources, from day one</h2>
+    <ul>
+      <li>State data-center policies: Maharashtra, Uttar Pradesh, Telangana, Karnataka, Gujarat, Tamil Nadu</li>
+      <li>Central Electricity Authority and National Power Portal capacity reports</li>
+      <li>Published India data-center pipeline trackers (JLL, Knight Frank, Colliers market reports)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Deliberately not building this weekend</h2>
+    <ul>
+      <li>Partner-matching graph, researcher/startup personas, business-analyst mode</li>
+      <li>PostGIS, full RAG-over-policy-corpus, auth and team workspaces, live GPU booking</li>
+    </ul>
+    <p style="margin-top:14px">These go on one closing slide as what we'd build next with a real utility-data partnership — ambition without pretending it's already built.</p>
+  </section>
+
+  <hr class="divider">
+
+  <div class="closing">
+    <h2>Why I'm sending you this</h2>
+    <p>I think this is buildable in a weekend, backed by real numbers instead of guessed ones, and different from the generic "AI infrastructure platform" idea most teams will pitch. I'd want to split it three ways: data collection and the extraction agent, the scoring and forecast logic, and the map plus demo polish.</p>
+    <p>Let me know which part you'd want to own, and if you see a hole in this before we commit a weekend to it.</p>
+  </div>
+
+</div>
+</body>
+</html>

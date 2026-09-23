@@ -1,1 +1,2321 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>India AI Grid</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css"></head><body><nav><div class="wrap nav"><a class="brand" href="index.html"><span class="mark">AI</span>INDIA AI GRID</a><div class="links"><a href="sitefinder.html">SiteFinder</a><a href="map.html">Map</a><a href="digital-twin.html">Digital Twin</a><a href="demand.html">Demand</a><a href="partners.html">Partners</a><a href="report.html">Report</a></div></div></nav><main class="wrap"><div class="top"><div><div class="eyebrow">AI infrastructure decision intelligence</div><h1>Build India's AI infrastructure intelligently.</h1><p class="lead">A modular decision platform for planning AI data centres — from site selection and infrastructure simulation to demand intelligence and ecosystem mapping.</p></div><a class="btn primary" href="sitefinder.html">Start a project →</a></div><div class="grid g3"><a class="card" href="sitefinder.html"><span class="tag">01 / SITEFINDER</span><h2>Where?</h2><p class="small">Compare regions using infrastructure readiness signals.</p></a><a class="card" href="digital-twin.html"><span class="tag">02 / DIGITAL TWIN</span><h2>Can it work?</h2><p class="small">Simulate how power, cooling, network and compute scale.</p></a><a class="card" href="demand.html"><span class="tag">03 / DEMAND</span><h2>Will demand exist?</h2><p class="small">Estimate potential enterprise, startup and research demand.</p></a><a class="card" href="partners.html"><span class="tag">04 / PARTNERS</span><h2>Who can build it?</h2><p class="small">Map the infrastructure and ecosystem partner categories.</p></a><a class="card" href="report.html"><span class="tag">05 / READINESS</span><h2>What's next?</h2><p class="small">Generate a transparent preliminary readiness report.</p></a><div class="card dark"><span class="tag">CORE PRINCIPLE</span><h2>Evidence → Model → Decision</h2><p class="small">Separate verified data, assumptions and scenario outputs.</p></div></div></main><footer><div class="wrap">INDIA AI GRID · Hack in Hill prototype</div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>India AI Grid — India's AI Infrastructure Dashboard</title>
+
+    <meta name="description"
+        content="India AI Grid — India's AI infrastructure, compute, data-centre, model and private-sector intelligence dashboard.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #EEF1EF;
+            --panel: #E3E9E5;
+            --panel2: #F5F6F4;
+            --text: #1B211F;
+            --muted: #68726D;
+            --green: #276F5F;
+            --green2: #3D8875;
+            --orange: #A9631F;
+            --line: #C7CFC9;
+            --dark: #202723;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            max-width: 1240px;
+            margin: auto;
+            padding: 0 28px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            height: 72px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(238, 241, 239, .95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .nav {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: "Space Grotesk";
+            font-weight: 700;
+            letter-spacing: -.03em;
+            font-size: 15px;
+        }
+
+        .mark {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--green);
+            border-radius: 7px;
+            display: grid;
+            place-items: center;
+            color: var(--green);
+            font: 11px monospace;
+        }
+
+        .links {
+            display: flex;
+            gap: 22px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .links a:hover {
+            color: var(--green);
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 0 35px;
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 30px;
+            align-items: end;
+        }
+
+        .eyebrow {
+            font: 11px monospace;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Space Grotesk";
+            letter-spacing: -.04em;
+        }
+
+        h1 {
+            font-size: 58px;
+            line-height: .98;
+            margin: 12px 0 18px;
+            max-width: 850px;
+        }
+
+        h2 {
+            font-size: 27px;
+            margin: 0 0 10px;
+        }
+
+        .lead {
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--muted);
+            max-width: 780px;
+        }
+
+        .asof {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            padding: 18px;
+            border-radius: 9px;
+        }
+
+        .asof strong {
+            display: block;
+            font: 700 20px "Space Grotesk";
+            margin: 5px 0;
+        }
+
+        .asof span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* SECTIONS */
+
+        .section {
+            padding: 32px 0;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 16px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 13px;
+            max-width: 620px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+            gap: 13px;
+        }
+
+        .g4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .g3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .g2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* CARDS */
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 21px;
+        }
+
+        .card.light {
+            background: var(--panel2);
+        }
+
+        .label {
+            font: 10px monospace;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+
+        .big {
+            font: 700 34px "Space Grotesk";
+            letter-spacing: -.04em;
+            margin: 10px 0 4px;
+        }
+
+        .sub {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .delta {
+            display: inline-block;
+            margin-top: 10px;
+            font: 11px monospace;
+            color: var(--green);
+            border: 1px solid #9EB8AE;
+            padding: 4px 7px;
+            border-radius: 5px;
+        }
+
+        .orange {
+            color: var(--orange);
+        }
+
+        /* DARK FEATURE CARD */
+
+        .hero-stat {
+            background: var(--dark);
+            color: #EDF2EE;
+            border-radius: 10px;
+            padding: 24px;
+        }
+
+        .hero-stat .label {
+            color: #8FC0B2;
+        }
+
+        .hero-stat .big {
+            font-size: 44px;
+        }
+
+        .hero-stat .sub {
+            color: #AAB4AE;
+        }
+
+        /* PROGRESS BAR */
+
+        .bar {
+            height: 10px;
+            background: #CCD5D0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 12px 0 5px;
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            background: var(--green);
+            border-radius: 20px;
+        }
+
+        /* MINI ROW */
+
+        .minirow {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding: 9px 0;
+            font-size: 12px;
+        }
+
+        .minirow strong {
+            font-family: monospace;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            overflow: hidden;
+        }
+
+        .t {
+            padding: 20px;
+            background: var(--panel);
+            border-right: 1px solid var(--line);
+        }
+
+        .t:last-child {
+            border-right: 0;
+        }
+
+        .t .year {
+            font: 700 22px monospace;
+            color: var(--green);
+        }
+
+        .t p {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* INSIGHT */
+
+        .insight {
+            border-left: 3px solid var(--green);
+            padding: 3px 0 3px 15px;
+            margin: 16px 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* SOURCE LIST */
+
+        .source-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .source {
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            background: var(--panel2);
+            font-size: 12px;
+        }
+
+        .source span {
+            color: var(--muted);
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* SOURCE INFORMATION ICON */
+
+        .info-dot {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 18px;
+            height: 18px;
+
+            margin-left: 6px;
+
+            border: 1px solid #9aa8a1;
+            border-radius: 50%;
+
+            font: 700 10px/1 Inter, sans-serif;
+
+            color: #587068;
+            background: #f5f6f4;
+
+            cursor: help;
+            vertical-align: middle;
+        }
+
+        /* TOOLTIP */
+
+        .info-dot .source-tip {
+            position: absolute;
+
+            z-index: 50;
+
+            left: 50%;
+            bottom: calc(100% + 9px);
+
+            transform: translateX(-50%);
+
+            width: 285px;
+
+            padding: 12px 13px;
+
+            background: #202723;
+
+            color: #edf2ee;
+
+            border: 1px solid #46534d;
+
+            border-radius: 8px;
+
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .16);
+
+            opacity: 0;
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity .15s ease,
+                visibility .15s ease;
+
+            text-align: left;
+
+            font: 11px/1.5 Inter, sans-serif;
+        }
+
+        /* TOOLTIP ARROW */
+
+        .info-dot .source-tip:after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 100%;
+
+            transform: translateX(-50%);
+
+            border: 6px solid transparent;
+
+            border-top-color: #202723;
+        }
+
+        /* SHOW TOOLTIP ON HOVER */
+
+        .info-dot:hover .source-tip,
+        .info-dot:focus .source-tip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* SOURCE TITLE */
+
+        .source-tip strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+
+        /* SOURCE LINK */
+
+        .source-tip a {
+            color: #9fd0c1;
+            text-decoration: underline;
+            overflow-wrap: anywhere;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--line);
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* TABLET */
+
+        @media(max-width:900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .g4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .g3 {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .t:nth-child(2) {
+                border-right: 0;
+            }
+
+            .t {
+                border-bottom: 1px solid var(--line);
+            }
+
+            h1 {
+                font-size: 46px;
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            .links {
+                display: none;
+            }
+
+            .g4,
+            .g2 {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .t {
+                border-right: 0;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .wrap {
+                padding: 0 18px;
+            }
+
+            /*
+  On phones, the source tooltip becomes
+  a floating source card.
+  */
+
+            .info-dot .source-tip {
+                position: fixed;
+
+                left: 18px;
+                right: 18px;
+                bottom: 18px;
+
+                transform: none;
+
+                width: auto;
+            }
+
+            .info-dot .source-tip:after {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <nav>
+
+        <div class="wrap nav">
+
+            <a class="brand" href="#">
+                <span class="mark">AI</span>
+                INDIA AI GRID
+            </a>
+
+            <div class="links">
+
+                <a href="#snapshot">Snapshot</a>
+
+                <a href="#compute">Compute</a>
+
+                <a href="#datacentres">Data Centres</a>
+
+                <a href="#models">Models</a>
+
+                <a href="#private">Private Sector</a>
+
+                <a href="#sources">Sources</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <main>
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="wrap hero">
+
+            <div>
+
+                <div class="eyebrow">
+                    India AI Infrastructure Intelligence · Research dashboard
+                </div>
+
+                <h1>
+                    India is building the infrastructure layer for its AI decade.
+                </h1>
+
+                <p class="lead">
+
+                    A research snapshot of public AI spending, shared compute,
+                    data-centre capacity, sovereign AI model development and
+                    the private capital wave shaping India's next AI infrastructure cycle.
+
+                </p>
+
+            </div>
+
+
+            <div class="asof">
+
+                <div class="eyebrow">
+                    DATA CUT
+                </div>
+
+                <strong>
+                    September 2026
+                </strong>
+
+                <span>
+
+                    Figures use the latest public sources found in this research pass.
+                    Capacity, investment commitments and model counts use different
+                    definitions and dates.
+
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     NATIONAL SNAPSHOT
+========================= -->
+
+        <section id="snapshot" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        01 / NATIONAL SNAPSHOT
+                    </div>
+
+                    <h2>
+                        Where India stands
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    The numbers below are intentionally labelled as budget,
+                    capacity, commitments or model counts rather than treated
+                    as one comparable pool of money or infrastructure.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="grid g4">
+
+
+                <!-- INDIA AI BUDGET -->
+
+                <div class="card">
+
+                    <div class="label">
+
+                        IndiaAI Mission
+
+                        <span class="info-dot" tabindex="0" aria-label="IndiaAI Mission source">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069" target="_blank"
+                                    rel="noopener">
+
+                                    Open Government of India source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        ₹10,371.92 Cr
+                    </div>
+
+                    <div class="sub">
+
+                        Five-year approved outlay for the national AI mission.
+
+                    </div>
+
+                    <span class="delta">
+                        Approved 2024
+                    </span>
+
+                </div>
+
+
+
+                <!-- GPU -->
+
+                <div class="card">
+
+                    <div class="label">
+
+                        Shared AI Compute
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                                    target="_blank" rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        45,000+ GPUs
+                    </div>
+
+                    <div class="sub">
+
+                        IndiaAI shared compute capacity reported as of June 2026.
+
+                    </div>
+
+                    <span class="delta">
+                        38,000+ earlier milestone
+                    </span>
+
+                </div>
+
+
+
+                <!-- DATA CENTRE -->
+
+                <div class="card">
+
+                    <div class="label">
+
+                        Operational DC Capacity
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India — Data Centre Market Monitor H1 2026
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        ~1.75 GW
+                    </div>
+
+                    <div class="sub">
+
+                        India's operational data-centre capacity at H1 2026.
+
+                    </div>
+
+                    <span class="delta">
+                        +~130 MW H1 2026
+                    </span>
+
+                </div>
+
+
+
+                <!-- PRIVATE CAPITAL -->
+
+                <div class="card">
+
+                    <div class="label">
+
+                        AI Infrastructure Commitments
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India — Data Centre Market Monitor H1 2026
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        $173B
+                    </div>
+
+                    <div class="sub">
+
+                        Cumulative data-centre investment commitments recorded
+                        from 2021 through H1 2026.
+
+                    </div>
+
+                    <span class="delta">
+                        $38B announced in H1 2026
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     COMPUTE
+========================= -->
+
+        <section id="compute" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        02 / COMPUTE
+                    </div>
+
+                    <h2>
+                        India's AI compute layer is scaling
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    Government-backed shared compute is designed to reduce
+                    the infrastructure barrier for startups, researchers and academia.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid g2">
+
+
+                <div class="hero-stat">
+
+                    <div class="label">
+
+                        INDIAAI COMMON COMPUTE
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                                    target="_blank" rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        45,000+ GPUs
+                    </div>
+
+                    <div class="sub">
+
+                        Reported by the Government of India as of June 2026.
+                        More than 38,000 GPUs had already been onboarded earlier
+                        in the mission.
+
+                    </div>
+
+
+                    <div class="bar">
+
+                        <i style="width:45%"></i>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            Longer-term mission target
+                        </span>
+
+                        <strong>
+                            100,000 GPUs
+                        </strong>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            Additional GPUs announced in Feb 2026
+                        </span>
+
+                        <strong>
+                            20,000
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        ACCESS & ECOSYSTEM
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069" target="_blank"
+                                    rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        ₹65/hour
+                    </div>
+
+                    <div class="sub">
+
+                        A February 2026 government note reported 38,000+
+                        high-end GPUs available at about ₹65/hour through
+                        subsidised shared compute.
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            AIKosh datasets
+                        </span>
+
+                        <strong>
+                            14,000+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            AIKosh models
+                        </span>
+
+                        <strong>
+                            331
+                        </strong>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            AI projects using subsidised compute
+                        </span>
+
+                        <strong>
+                            237
+                        </strong>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            GPU hours accessed
+                        </span>
+
+                        <strong>
+                            93.18 lakh
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     DATA CENTRES
+========================= -->
+
+        <section id="datacentres" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        03 / DATA CENTRES
+                    </div>
+
+                    <h2>
+                        The physical AI factory is expanding
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    Capacity figures are more reliable than a simple facility
+                    count because market reports use different definitions for
+                    facilities, campuses and IT load.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid g3">
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        CURRENT SCALE
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        ~1.75 GW
+                    </div>
+
+                    <div class="sub">
+
+                        CBRE's H1 2026 estimate of operational
+                        data-centre capacity.
+
+                    </div>
+
+
+                    <div class="bar">
+
+                        <i style="width:29%"></i>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            New supply H1 2026
+                        </span>
+
+                        <strong>
+                            ~130 MW
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        2029 PROJECTION
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                JLL India
+
+                                <br>
+
+                                <a href="https://www.jll.com/en-in/insights/market-dynamics/india-data-centers"
+                                    target="_blank" rel="noopener">
+
+                                    Open JLL source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        6 GW
+                    </div>
+
+                    <div class="sub">
+
+                        JLL's August 2026 outlook projects India's capacity
+                        to reach approximately 6 GW by 2029.
+
+                    </div>
+
+
+                    <div class="bar">
+
+                        <i style="width:100%"></i>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            Approx. increase
+                        </span>
+
+                        <strong>
+                            ~3.75×
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        OPERATOR PIPELINE SIGNAL
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        92%
+                    </div>
+
+                    <div class="sub">
+
+                        CBRE's preliminary 2026 operator survey found
+                        92% of surveyed operators planned to add more than
+                        100 MW over the next 24 months.
+
+                    </div>
+
+
+                    <div class="bar">
+
+                        <i style="width:92%"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+
+            <!-- TIMELINE -->
+
+            <div class="timeline">
+
+
+                <div class="t">
+
+                    <div class="year">
+                        2020
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069" target="_blank"
+                                    rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        ~375 MW national data-centre capacity.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="t">
+
+                    <div class="year">
+                        2025
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        ~1.5 GW capacity under CBRE's methodology.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="t">
+
+                    <div class="year">
+                        2026
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        ~1.75 GW operational capacity by H1 2026.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="t">
+
+                    <div class="year">
+                        2029
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                JLL India
+
+                                <br>
+
+                                <a href="https://www.jll.com/en-in/insights/market-dynamics/india-data-centers"
+                                    target="_blank" rel="noopener">
+
+                                    Open JLL source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        JLL projects approximately 6 GW.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="insight">
+
+                <strong>
+                    Why this matters to India AI Grid:
+                </strong>
+
+                The next infrastructure problem is not simply
+                "where are the data centres?" but
+                "where can another 20–100+ MW AI facility be powered,
+                cooled, connected and commercially utilised?"
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     INDIAN AI MODELS
+========================= -->
+
+        <section id="models" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        04 / INDIAN AI MODELS
+                    </div>
+
+                    <h2>
+                        A sovereign model ecosystem is emerging
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    India's model layer is moving from isolated startups
+                    toward a government-supported portfolio of foundational,
+                    multilingual and domain-specific models.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid g3">
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        FOUNDATION MODEL PIPELINE
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                                    target="_blank" rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        20 proposals
+                    </div>
+
+                    <div class="sub">
+
+                        20 indigenous foundation-model proposals were selected,
+                        including large multimodal and small language models.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        AIKOSH / NATIONAL REPOSITORY
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                                    target="_blank" rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        331 models
+                    </div>
+
+                    <div class="sub">
+
+                        AIKosh was reported to host more than
+                        14,000 datasets and 331 AI models.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        BHARATGEN / INDIC MODELS
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Government of India / PIB
+
+                                <br>
+
+                                <a href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                                    target="_blank" rel="noopener">
+
+                                    Open PIB source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        22 languages
+                    </div>
+
+                    <div class="sub">
+
+                        BharatGen's roadmap targeted coverage
+                        across India's scheduled languages.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="card light">
+
+                <div class="label">
+                    EXAMPLES OF INDIA'S MODEL LAYER
+                </div>
+
+
+                <div class="grid g4" style="margin-top:14px">
+
+
+                    <div>
+
+                        <strong>Sarvam AI</strong>
+
+                        <div class="sub">
+
+                            Multilingual LLM, speech and enterprise AI models.
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>BharatGen</strong>
+
+                        <div class="sub">
+
+                            Government-supported Indian-language foundation
+                            and multimodal models.
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Krutrim</strong>
+
+                        <div class="sub">
+
+                            Indian-language and general-purpose model ecosystem.
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Bhashini</strong>
+
+                        <div class="sub">
+
+                            Multilingual AI services spanning translation,
+                            speech and language technologies.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     PRIVATE SECTOR
+========================= -->
+
+        <section id="private" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        05 / PRIVATE-SECTOR WAVE
+                    </div>
+
+                    <h2>
+                        Private capital is becoming the physical expansion engine
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    Government compute is important, but the scale of future
+                    data-centre infrastructure depends heavily on private capital,
+                    hyperscalers, operators, energy companies and infrastructure developers.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid g2">
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        CUMULATIVE COMMITMENTS
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                CBRE India
+
+                                <br>
+
+                                <a href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                                    target="_blank" rel="noopener">
+
+                                    Open CBRE source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        $173B
+                    </div>
+
+                    <div class="sub">
+
+                        CBRE reports cumulative data-centre investment
+                        commitments of $173 billion between 2021 and H1 2026.
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            Announced H1 2026
+                        </span>
+
+                        <strong>
+                            $38B
+                        </strong>
+
+                    </div>
+
+
+                    <div class="minirow">
+
+                        <span>
+                            AI-led demand
+                        </span>
+
+                        <strong>
+                            Rising
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        EXAMPLE: TCS + PARTNERS
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                Reuters — September 2026
+
+                                <br>
+
+                                <a href="https://www.reuters.com/world/india/indias-tcs-unit-invest-up-74-billion-ai-data-center-campus-2026-09-05/"
+                                    target="_blank" rel="noopener">
+
+                                    Open Reuters source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        1 GW / $7.4B
+                    </div>
+
+                    <div class="sub">
+
+                        Reuters reported that a TCS subsidiary and partners
+                        planned up to ₹700 billion for a 1 GW AI data-centre
+                        campus in Telangana.
+
+                    </div>
+
+
+                    <br>
+
+
+                    <span class="delta">
+                        Reported plan — not deployed capacity
+                    </span>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+                        WHAT THE MARKET IS BUYING
+                    </div>
+
+                    <h2>
+                        Power + land + fibre + cooling
+                    </h2>
+
+                    <div class="sub">
+
+                        Key site-selection variables include network connectivity,
+                        power availability, renewable-energy sourcing and market access.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="hero-stat">
+
+                    <div class="label">
+                        THE OPPORTUNITY INDIA AI GRID TARGETS
+                    </div>
+
+                    <div class="big">
+                        Decision intelligence
+                    </div>
+
+                    <div class="sub">
+
+                        As projects become larger, early-stage site screening
+                        becomes a multi-variable problem: power, renewable energy,
+                        water, connectivity, talent, demand, policy and expansion
+                        capacity must be evaluated together.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     MARKET
+========================= -->
+
+        <section class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        06 / MARKET SIGNAL
+                    </div>
+
+                    <h2>
+                        AI is becoming a major Indian market
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="grid g2">
+
+
+                <div class="card">
+
+                    <div class="label">
+
+                        INDIA AI MARKET FORECAST
+
+                        <span class="info-dot" tabindex="0">
+
+                            i
+
+                            <span class="source-tip">
+
+                                <strong>
+                                    Source
+                                </strong>
+
+                                SEBI-hosted India AI Market Landscape
+
+                                <br>
+
+                                <a href="https://www.sebi.gov.in/sebi_data/attachdocs/oct-2025/1759923004723_994.pdf"
+                                    target="_blank" rel="noopener">
+
+                                    Open SEBI source
+
+                                </a>
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="big">
+                        $43.5B by 2030
+                    </div>
+
+                    <div class="sub">
+
+                        A SEBI-hosted market landscape report cites
+                        a forecast of India's AI market growing from
+                        $10.9B in 2025 to $43.5B in 2030.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="label">
+                        AI + DIGITAL ECONOMY
+                    </div>
+
+                    <div class="big">
+                        Infrastructure → demand
+                    </div>
+
+                    <div class="sub">
+
+                        The market case for India AI Grid is that AI
+                        infrastructure decisions increasingly need to connect
+                        physical capacity with where AI workloads, enterprises,
+                        research and model developers are emerging.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+     SOURCES
+========================= -->
+
+        <section id="sources" class="wrap section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        07 / SOURCE REGISTER
+                    </div>
+
+                    <h2>
+                        Evidence behind the dashboard
+                    </h2>
+
+                </div>
+
+                <p>
+
+                    Use these sources to verify the methodology and date behind
+                    each figure.
+
+                </p>
+
+            </div>
+
+
+            <div class="source-list">
+
+
+                <a class="source" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069" target="_blank"
+                    rel="noopener">
+
+                    <strong>
+                        Government of India / PIB — IndiaAI Mission
+                    </strong>
+
+                    <span>
+                        ₹10,372 crore mission outlay; 38,000+ GPUs onboarded.
+                    </span>
+
+                </a>
+
+
+
+                <a class="source" href="https://www.pib.gov.in/FactsheetDetails.aspx?Id=150860&lang=2&reg=3"
+                    target="_blank" rel="noopener">
+
+                    <strong>
+                        Government of India / PIB — AI factsheet
+                    </strong>
+
+                    <span>
+                        45,000+ GPUs; indigenous foundation-model proposals;
+                        AIKosh datasets and models.
+                    </span>
+
+                </a>
+
+
+
+                <a class="source"
+                    href="https://www.cbre.co.in/insights/figures/india-data-centre-market-monitor-h1-2026"
+                    target="_blank" rel="noopener">
+
+                    <strong>
+                        CBRE India — Data Centre Market Monitor H1 2026
+                    </strong>
+
+                    <span>
+                        ~1.75 GW operational capacity; investment commitments
+                        and operator expansion signals.
+                    </span>
+
+                </a>
+
+
+
+                <a class="source" href="https://www.jll.com/en-in/insights/market-dynamics/india-data-centers"
+                    target="_blank" rel="noopener">
+
+                    <strong>
+                        JLL India — Data Centre 2026 Mid-Year Report
+                    </strong>
+
+                    <span>
+                        1.6 GW mid-2026 to approximately 6 GW by 2029 projection.
+                    </span>
+
+                </a>
+
+
+
+                <a class="source"
+                    href="https://www.reuters.com/world/india/indias-tcs-unit-invest-up-74-billion-ai-data-center-campus-2026-09-05/"
+                    target="_blank" rel="noopener">
+
+                    <strong>
+                        Reuters — TCS / Telangana AI campus
+                    </strong>
+
+                    <span>
+                        Reported ₹700B / ~$7.4B planned investment for
+                        a 1 GW AI data-centre campus.
+                    </span>
+
+                </a>
+
+
+
+                <a class="source" href="https://www.sebi.gov.in/sebi_data/attachdocs/oct-2025/1759923004723_994.pdf"
+                    target="_blank" rel="noopener">
+
+                    <strong>
+                        SEBI-hosted India AI Market Landscape
+                    </strong>
+
+                    <span>
+                        Market forecast cited: $10.9B in 2025 to $43.5B in 2030.
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <div class="wrap">
+
+            <strong>
+                INDIA AI GRID
+            </strong>
+
+            · Research dashboard prototype · September 2026
+
+            <br><br>
+
+            <span>
+
+                Figures are not directly comparable across methodologies.
+                Investment commitments are not the same as deployed capital.
+                Data-centre capacity is not a count of facilities.
+                Forecasts are forecasts.
+
+                India AI Grid is a decision-support concept,
+                not investment advice.
+
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

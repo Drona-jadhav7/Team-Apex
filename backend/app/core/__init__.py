@@ -1,0 +1,1 @@
+# SuperIndia.ai core module

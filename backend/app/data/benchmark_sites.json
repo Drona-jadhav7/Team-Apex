@@ -1,0 +1,162 @@
+[
+  {
+    "site_id": "site_navi_mumbai",
+    "site_name": "Navi Mumbai - TTC MIDC Hub (Airoli)",
+    "state": "Maharashtra",
+    "district": "Thane / Navi Mumbai",
+    "latitude": 19.1432,
+    "longitude": 72.9984,
+    "elevation_m": 8.5,
+    "proposed_it_load_mw": 80.0,
+    "water_params": {
+      "groundwater_extraction_pct": 74.0,
+      "water_quality_tds": 420.0,
+      "demand_stress_score": 48.0,
+      "data_center_demand_mld": 2.2,
+      "local_aquifer_stress_pct": 72.0,
+      "industrial_density_index": 85.0,
+      "stp_distance_km": 3.2,
+      "tertiary_supply_mld": 25.0,
+      "assured_supply_mld": 3.2,
+      "on_site_storage_hours": 48.0,
+      "elevation_m": 8.5,
+      "drought_risk_index": 28.0,
+      "flood_zone_risk": 55.0
+    },
+    "power_params": {
+      "substation_distance_km": 1.6,
+      "voltage_class_kv": 220.0,
+      "spare_mva_margin": 95.0,
+      "proposed_it_load_mw": 80.0,
+      "renewable_open_access_score": 75.0
+    }
+  },
+  {
+    "site_id": "site_noida",
+    "site_name": "Noida - Sector 132 / Yamuna Corridor",
+    "state": "Uttar Pradesh",
+    "district": "Gautam Buddha Nagar",
+    "latitude": 28.5135,
+    "longitude": 77.3820,
+    "elevation_m": 198.0,
+    "proposed_it_load_mw": 60.0,
+    "water_params": {
+      "groundwater_extraction_pct": 94.0,
+      "water_quality_tds": 780.0,
+      "demand_stress_score": 58.0,
+      "data_center_demand_mld": 1.8,
+      "local_aquifer_stress_pct": 88.0,
+      "industrial_density_index": 70.0,
+      "stp_distance_km": 4.5,
+      "tertiary_supply_mld": 35.0,
+      "assured_supply_mld": 2.4,
+      "on_site_storage_hours": 60.0,
+      "elevation_m": 198.0,
+      "drought_risk_index": 38.0,
+      "flood_zone_risk": 22.0
+    },
+    "power_params": {
+      "substation_distance_km": 1.2,
+      "voltage_class_kv": 400.0,
+      "spare_mva_margin": 140.0,
+      "proposed_it_load_mw": 60.0,
+      "renewable_open_access_score": 82.0
+    }
+  },
+  {
+    "site_id": "site_bengaluru",
+    "site_name": "Bengaluru - KIADB Aerospace Park (Devanahalli)",
+    "state": "Karnataka",
+    "district": "Bengaluru Rural",
+    "latitude": 13.2185,
+    "longitude": 77.6890,
+    "elevation_m": 915.0,
+    "proposed_it_load_mw": 50.0,
+    "water_params": {
+      "groundwater_extraction_pct": 118.0,
+      "water_quality_tds": 540.0,
+      "demand_stress_score": 38.0,
+      "data_center_demand_mld": 1.5,
+      "local_aquifer_stress_pct": 92.0,
+      "industrial_density_index": 78.0,
+      "stp_distance_km": 6.8,
+      "tertiary_supply_mld": 18.0,
+      "assured_supply_mld": 1.65,
+      "on_site_storage_hours": 72.0,
+      "elevation_m": 915.0,
+      "drought_risk_index": 42.0,
+      "flood_zone_risk": 8.0
+    },
+    "power_params": {
+      "substation_distance_km": 2.4,
+      "voltage_class_kv": 220.0,
+      "spare_mva_margin": 75.0,
+      "proposed_it_load_mw": 50.0,
+      "renewable_open_access_score": 92.0
+    }
+  },
+  {
+    "site_id": "site_chennai",
+    "site_name": "Chennai - Siruseri SIPCOT (OMR Corridor)",
+    "state": "Tamil Nadu",
+    "district": "Chengalpattu",
+    "latitude": 12.8250,
+    "longitude": 80.2220,
+    "elevation_m": 6.2,
+    "proposed_it_load_mw": 70.0,
+    "water_params": {
+      "groundwater_extraction_pct": 84.0,
+      "water_quality_tds": 920.0,
+      "demand_stress_score": 52.0,
+      "data_center_demand_mld": 2.0,
+      "local_aquifer_stress_pct": 80.0,
+      "industrial_density_index": 75.0,
+      "stp_distance_km": 2.1,
+      "tertiary_supply_mld": 40.0,
+      "assured_supply_mld": 3.2,
+      "on_site_storage_hours": 40.0,
+      "elevation_m": 6.2,
+      "drought_risk_index": 35.0,
+      "flood_zone_risk": 68.0
+    },
+    "power_params": {
+      "substation_distance_km": 3.1,
+      "voltage_class_kv": 230.0,
+      "spare_mva_margin": 60.0,
+      "proposed_it_load_mw": 70.0,
+      "renewable_open_access_score": 86.0
+    }
+  },
+  {
+    "site_id": "site_hyderabad",
+    "site_name": "Hyderabad - Fab City / Shamshabad Hub",
+    "state": "Telangana",
+    "district": "Ranga Reddy",
+    "latitude": 17.1950,
+    "longitude": 78.4750,
+    "elevation_m": 565.0,
+    "proposed_it_load_mw": 100.0,
+    "water_params": {
+      "groundwater_extraction_pct": 62.0,
+      "water_quality_tds": 340.0,
+      "demand_stress_score": 78.0,
+      "data_center_demand_mld": 2.5,
+      "local_aquifer_stress_pct": 45.0,
+      "industrial_density_index": 50.0,
+      "stp_distance_km": 4.0,
+      "tertiary_supply_mld": 30.0,
+      "assured_supply_mld": 5.25,
+      "on_site_storage_hours": 96.0,
+      "elevation_m": 565.0,
+      "drought_risk_index": 22.0,
+      "flood_zone_risk": 12.0
+    },
+    "power_params": {
+      "substation_distance_km": 1.4,
+      "voltage_class_kv": 400.0,
+      "spare_mva_margin": 180.0,
+      "proposed_it_load_mw": 100.0,
+      "renewable_open_access_score": 88.0
+    }
+  }
+]

@@ -12,6 +12,7 @@ __pycache__/
 dist/
 build/
 .next/
+.vite/
 
 # local data / generated outputs
 data/raw/*

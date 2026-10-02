@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+// Default to relative '/api' so all requests pass transparently through the Vite proxy
+// on the same origin (preventing "Connection Refused: localhost:8000" on public tunnels)
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000,
+  timeout: 15000,
 });
 
 export const fetchBenchmarkSites = async () => {
@@ -32,9 +34,16 @@ export const compareSites = async (payload = {}) => {
 
 export const checkApiHealth = async () => {
   try {
-    const res = await apiClient.get('/health', { baseURL: 'http://127.0.0.1:8000' });
+    // Relative call through Vite proxy
+    const res = await apiClient.get('/health', { baseURL: '' });
     return res.data;
   } catch (err) {
-    return { status: 'offline', error: err.message };
+    try {
+      // Fallback to /api/health
+      const res = await apiClient.get('/health');
+      return res.data;
+    } catch (innerErr) {
+      return { status: 'offline', error: innerErr.message };
+    }
   }
 };

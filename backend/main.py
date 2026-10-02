@@ -1,32 +1,19 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api.location import router as location_router
+# Import application from backend.app.main
+from backend.app.main import app as superindia_app
+from backend.app.core.config import settings
 
-from backend.api.water import router as water_router
+# Ensure CORSMiddleware is fully configured to accept requests from tunneled public domains
+# (e.g. *.trycloudflare.com, *.loca.lt, and localhost)
+app = superindia_app
 
-app = FastAPI(
-    title="India AI Grid API",
-    description="AI infrastructure intelligence backend for India",
-    version="0.1.0",
+# Re-affirm CORS configuration for any direct imports of backend.main:app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
-
-app.include_router(location_router)
-
-
-@app.get("/")
-def root():
-    return {
-        "name": "India AI Grid API",
-        "status": "running",
-        "version": "0.1.0",
-    }
-
-
-@app.get("/health")
-def health():
-    return {
-        "status": "healthy",
-    }
-
-app.include_router(water_router)

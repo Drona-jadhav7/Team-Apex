@@ -24,6 +24,14 @@ def load_benchmark_sites() -> List[SiteInput]:
         data = json.load(f)
     return [SiteInput(**item) for item in data]
 
+@router.get("/health")
+def api_health():
+    return {
+        "status": "healthy",
+        "service": "SuperIndia.ai API",
+        "version": "1.0.0",
+    }
+
 @router.post("/assess", response_model=SiteAssessmentResponse)
 def assess_site_endpoint(site: SiteInput):
     """

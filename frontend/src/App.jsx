@@ -109,7 +109,7 @@ export default function App() {
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
-                  {s.site_name.split(' - ')[0]}
+                  {s.site_name.split(' (')[0].split(' - ')[0]}
                 </button>
               );
             })}

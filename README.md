@@ -138,40 +138,38 @@ SuperIndia.ai/
 │   ├── postcss.config.js
 │   └── vite.config.js
 ├── README.md
-├── start.sh                         # Unified launch script (Linux / macOS)
-└── start.bat                        # Unified launch script (Windows)
+├── README.md
+├── start.sh                         # Unified local launch script (Linux / macOS)
+├── start.bat                        # Unified local launch script (Windows)
+├── tunnel.sh                        # Instant HTTPS tunnel launcher (Unix / macOS)
+└── tunnel.bat                       # Instant HTTPS tunnel launcher (Windows)
 ```
 
 ---
 
-## 4. Pre-Seeded Benchmark Hubs Ground Truth
+## 4. Pre-Seeded Benchmark Demonstration Hubs
 
-SuperIndia.ai ships with five pre-seeded strategic AI hubs across India:
+SuperIndia.ai ships with pre-seeded strategic AI hubs, including the three core demonstration sites:
 
-1. **Navi Mumbai - TTC MIDC Hub (Airoli / Mahape), Maharashtra**
-   - **Composite Score:** 79.2 (VIABLE)
-   - **Water Score:** 71.4 | **Power Score:** 85.5
-   - *Key Telemetry:* 220kV grid connection, 95 MVA margin, 8.5m coastal elevation (triggers sub-grade electrical mandate), Demand Stress 48.0 (triggers closed-loop + CETP mandate).
+1. **Mahape MIDC (TTC Industrial Area), Navi Mumbai**
+   - **Composite Score:** 80.8 (VIABLE)
+   - **Water Score:** 74.0 | **Power Score:** 86.4
+   - *Key Telemetry:* 220kV EHV grid (1.5 km), 95 MVA spare margin, 14.5m elevation, Demand Stress 48.0 (triggers closed-loop cooling and MIDC CETP tertiary treated greywater mandate).
 
-2. **Noida - Sector 132 / Yamuna Corridor, Uttar Pradesh**
-   - **Composite Score:** 83.0 (VIABLE)
-   - **Water Score:** 69.3 | **Power Score:** 94.2
-   - *Key Telemetry:* 400kV UPPTCL feed, 140 MVA spare margin, 94% groundwater extraction (Yamuna alluvial stress), 35 MLD STP recycled water access.
+2. **Taloja MIDC (Industrial Corridor), Navi Mumbai / Raigad**
+   - **Composite Score:** 73.2 (CONDITIONAL / HIGH RISK)
+   - **Water Score:** 61.6 | **Power Score:** 82.7
+   - *Key Telemetry:* 88% groundwater extraction, 1050 mg/L TDS brackish chemical load (triggers high salinity/softening mandate), Demand Stress 42.0 (severe competing industrial draft).
 
-3. **Bengaluru - KIADB Aerospace Park (Devanahalli), Karnataka**
-   - **Composite Score:** 74.0 (CONDITIONAL / HIGH RISK)
-   - **Water Score:** 60.4 | **Power Score:** 85.1
-   - *Key Telemetry:* 118% groundwater extraction (Over-exploited CGWA zone), demand stress 38.0, 920m plateau elevation, strong 92% solar open-access.
+3. **Coastal South Mumbai (Port Trust / Nariman Point)**
+   - **Composite Score:** 60.8 (CONDITIONAL / HIGH RISK)
+   - **Water Score:** 62.4 | **Power Score:** 59.6
+   - *Key Telemetry:* 4.2m coastal ground elevation (< 10m threshold! triggers 100-year flood zone & CRZ restrictions alert and *"Unviable for sub-grade electrical infrastructure"* mandate), 30 MVA spare margin.
 
-4. **Chennai - Siruseri SIPCOT (OMR Corridor), Tamil Nadu**
-   - **Composite Score:** 75.6 (VIABLE)
-   - **Water Score:** 67.1 | **Power Score:** 82.5
-   - *Key Telemetry:* 230kV substation, 6.2m coastal ground elevation (triggers flood zone restriction mandate), 920 mg/L TDS brackish groundwater (requires TTRO desalination).
-
-5. **Hyderabad - Fab City / Shamshabad Hub, Telangana**
-   - **Composite Score:** 91.8 (VIABLE - Top Ranked)
-   - **Water Score:** 88.0 | **Power Score:** 94.9
-   - *Key Telemetry:* 400kV Maheshwaram grid, 180 MVA spare margin, 62% safe CGWA extraction, Krishna trunk pipeline water supply, zero risk flags.
+4. **Noida - Sector 132 / Yamuna Corridor, Uttar Pradesh** (Composite: 83.0 - VIABLE)
+5. **Bengaluru - KIADB Aerospace Park (Devanahalli), Karnataka** (Composite: 74.0 - CONDITIONAL)
+6. **Chennai - Siruseri SIPCOT (OMR Corridor), Tamil Nadu** (Composite: 75.6 - VIABLE)
+7. **Hyderabad - Fab City / Shamshabad Hub, Telangana** (Composite: 91.8 - VIABLE - Top Ranked)
 
 ---
 
@@ -181,11 +179,11 @@ The FastAPI backend exposes the following endpoints under `/api`:
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/api/sites` | List all 5 benchmark hubs with calculated assessments |
+| `GET` | `/api/sites` | List all benchmark demonstration hubs with calculated assessments |
 | `GET` | `/api/sites/{site_id}` | Retrieve detailed assessment for a single benchmark site |
 | `POST` | `/api/assess` | Run the 7+4 deterministic engine on any custom site payload |
 | `POST` | `/api/compare` | Multi-site ranking and comparative analysis matrix |
-| `GET` | `/health` | Health check and engine status |
+| `GET` | `/health` / `/api/health` | Health check and engine status |
 | `GET` | `/docs` | Interactive Swagger UI documentation |
 
 ---
@@ -196,7 +194,24 @@ The FastAPI backend exposes the following endpoints under `/api`:
 - Python 3.10+ (installed with `fastapi`, `uvicorn`, `pydantic`)
 - Node.js 18+ and npm
 
-### One-Command Unified Startup
+### Instant Public HTTPS Tunnel (For Judges & Teammates)
+
+To make the full-stack dashboard accessible publicly from any phone, laptop, or remote device without broken localhost calls:
+
+**On Windows:**
+```cmd
+tunnel.bat
+```
+
+**On Linux / macOS:**
+```bash
+chmod +x tunnel.sh
+./tunnel.sh
+```
+
+*(This automatically checks/starts FastAPI on port 8000, Vite on port 5173 with proxy configured, launches the tunnel via Cloudflare or localtunnel, and prints the public HTTPS URL).*
+
+### Local Startup
 
 On Linux / macOS / Git Bash:
 ```bash
@@ -204,7 +219,7 @@ chmod +x start.sh
 ./start.sh
 ```
 
-On Windows (Command Prompt or PowerShell):
+On Windows:
 ```cmd
 start.bat
 ```

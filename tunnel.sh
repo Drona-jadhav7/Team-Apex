@@ -44,14 +44,14 @@ if command -v cloudflared >/dev/null 2>&1; then
     echo "================================================================"
     echo " Copy the generated https://*.trycloudflare.com URL below!"
     echo "================================================================"
-    cloudflared tunnel --url http://localhost:5173 --http-host-header localhost:5173
+    cloudflared tunnel --url http://127.0.0.1:5173 --http-host-header localhost:5173
 elif command -v npx >/dev/null 2>&1; then
     echo "[Tunnel Provider] Using localtunnel (npx localtunnel)..."
     echo ""
     echo "================================================================"
     echo " Copy the generated https://*.loca.lt URL below!"
     echo "================================================================"
-    npx localtunnel --port 5173 --local-host localhost
+    npx localtunnel --port 5173 --local-host 127.0.0.1
 else
     echo "Error: Neither cloudflared nor npx localtunnel found."
     exit 1

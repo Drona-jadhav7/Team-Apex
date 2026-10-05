@@ -11,12 +11,12 @@ export default defineConfig({
     allowedHosts: true, // Allow all tunneled domains (*.trycloudflare.com, *.loca.lt)
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://127.0.0.1:8000',
         changeOrigin: true,
         secure: false,
       },
       '/health': {
-        target: 'http://localhost:8000',
+        target: 'http://127.0.0.1:8000',
         changeOrigin: true,
         secure: false,
       },

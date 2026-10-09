@@ -1,6 +1,6 @@
 # SuperIndia.ai ⚡🇮🇳
 > **Deterministic Geospatial Decision Intelligence Platform for India's AI Compute & National Infrastructure**  
-> *Developed for Hack in Hills Manali 2026 — AI Systems & National Infrastructure Track*
+> *Developed for Hackyard BUILD 2026 — AI Systems & National Infrastructure Track*
 
 ---
 
